@@ -1,57 +1,97 @@
-# Project Name
-
-(short, 1-3 sentenced, description of the project)
-
-## Features
-
-This project framework provides the following features:
-
-* Feature 1
-* Feature 2
-* ...
-
-## Getting Started
-
-### Prerequisites
-
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
-
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
-
-### Quickstart
-(Add steps to get up and running quickly)
-
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+---
+page_type: sample
+languages:
+- python
+products:
+- azure
+extensions:
+  services: Sql
+description: "This repo contains tested reference examples of using Django with SQL Servers."
+urlFragment: mssql-django-samples
+---
 
 
-## Demo
+# Django SQL Driver - mssql-django
 
-A demo app is included to show how to use the project.
+## Get started
 
-To run the demo, follow these steps:
+### Windows  
+Connect to SQL Database from Django app:
+1. **Download Python installer**.  
+  Install Python3 if your machine does not have it. Visit [Python download page](https://www.python.org/downloads/windows/).
+2. **Install and verify Python**.  
+   a. Double click the installer, follow instructions on the screen.  
+   b. After finished install. Run `py -V` in command line to verify it. 
+```
+> py -V
+Python 3.7.8 
+```
+1. **Install django and mssql-django**  
+  Use pip to install mssql-django, 
+```
+> py -m pip install django mssql-django
+```
+### Linux
+Connect to SQL Database from Django app:  
+1. [**Install Microsoft ODBC Driver for SQL Server on Linux**](../../odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server.md)
 
-(Add steps to start up the demo)
+2. **Install Python3**
+```
+# eg. For Ubuntu
 
-1.
-2.
-3.
+$ sudo apt-get install python3
+```
+3. **Install django and mssql-django**
+```
+$ python3 -m pip install django mssql-django
+```
 
-## Resources
+## Creating a project
+1. **Create a Django project**
+```
+$ django-admin startproject mysite
+```
+2. **Edit `setting.py` file**  
+Go to mysite/mysite/settings.py  
+In `DATABASE` section, edit accrodingly. Make sure the `DATABASE_NAME` is exist in your SQL Server instance.
+```python
+# settings.py
+DATABASES = {
+    "default": {
+        "ENGINE": "mssql",
+        "NAME": "DATABASE_NAME",
+        "USER": "USER_NAME",
+        "PASSWORD": "PASSWORD",
+        "HOST": "HOST_ADDRESS",
+        "PORT": "1433",
+        "OPTIONS": {"driver": "ODBC Driver 17 for SQL Server", 
+        },
+    },
+}
 
-(Any additional resources or related projects)
+```
+3. **Run Django project**
+```
+# Linux
+$ python manage.py runserver
 
-- Link to supporting information
-- Link to similar sample
-- ...
+# Windows
+\> py manage.py runserver
+```
+
+```
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+April 22, 2021 - 17:48:06
+Django version 3.1.8, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+Now the development server is running at http://127.0.0.1:8000/. Open browser and navigate to that page, you should be able to see a Django welcome page. 
+  
+---
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
