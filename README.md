@@ -31,6 +31,7 @@ Python 3.7.8
 ```
 > py -m pip install django mssql-django
 ```
+  
 ### Linux
 Connect to SQL Database from Django app:  
 1. [**Install Microsoft ODBC Driver for SQL Server on Linux**](../../odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server.md)
