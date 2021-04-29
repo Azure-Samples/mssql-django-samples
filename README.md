@@ -4,8 +4,6 @@ languages:
 - python
 products:
 - azure
-extensions:
-  services: Sql
 description: "This repo contains tested reference examples of using Django with SQL Servers."
 urlFragment: mssql-django-samples
 ---
