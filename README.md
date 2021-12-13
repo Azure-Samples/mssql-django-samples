@@ -68,7 +68,24 @@ DATABASES = {
     },
 }
 
-```
+# OR If you want to connect Django's local development with local SQL server instance using Windows Authentication, You may use this configuration
+# Leave the `USER`, `PASSWORD` and `PORT` field blank.
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': 'DATABASE_NAME',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'HOST_ADDRESS',
+        'PORT': '',
+        'TrustedConnection': 'True',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server'
+        }
+    }
+}
+ ```
 3. **Run Django project**
 ```
 # Linux
