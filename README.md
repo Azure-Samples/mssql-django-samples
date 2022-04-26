@@ -52,7 +52,7 @@ $ django-admin startproject mysite
 ```
 2. **Edit `setting.py` file**  
 Go to mysite/mysite/settings.py  
-In `DATABASE` section, edit accrodingly. Make sure the `DATABASE_NAME` is exist in your SQL Server instance.
+In `DATABASE` section, edit accordingly. Make sure the `DATABASE_NAME` is exist in your SQL Server instance.
 ```python
 # settings.py
 DATABASES = {
